@@ -4,7 +4,8 @@ const callback3 = (id, callback) => {
   if (typeof id == undefined || typeof callback == undefined) {
     console.log("invalid input");
   } else {
-    setTimeout(()=>{fs.readFile("../cards.json", "utf-8", (err, data) => {
+    setTimeout(() => {
+      fs.readFile("../cards.json", "utf-8", (err, data) => {
         if (err) {
           callback(err);
         } else {
@@ -15,9 +16,10 @@ const callback3 = (id, callback) => {
           } else {
             result = [];
           }
-          callback(null, result);
+          callback(result);
         }
-      })},2000)
+      });
+    }, 2000);
   }
 };
 module.exports = callback3;
