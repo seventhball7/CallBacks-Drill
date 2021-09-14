@@ -17,7 +17,7 @@ const callback2 = (id, callback) => {
             result = [];
           }
 
-          callback(result);
+          callback(err,result);
         }
       });
     }, 2000);
