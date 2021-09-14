@@ -5,7 +5,7 @@ const callback3 = (id, callback) => {
     console.log("invalid input");
   } else {
     setTimeout(() => {
-      fs.readFile("../cards.json", "utf-8", (err, data) => {
+      fs.readFile("../JSONData/cards.json", "utf-8", (err, data) => {
         if (err) {
           callback(err);
         } else {

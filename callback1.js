@@ -5,7 +5,7 @@ const callback1 = (id, callback) => {
     console.log("rec  undefined");
   } else {
     setTimeout(() => {
-      fs.readFile("../boards.json", "utf8", (err, data) => {
+      fs.readFile("../JSONData/boards.json", "utf8", (err, data) => {
         if (err) {
           callback(err);
         } else {
