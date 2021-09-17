@@ -1,27 +1,22 @@
 const fs = require("fs");
 
-const callback2 = (id, callback) => {
-  if (typeof id == undefined || typeof callback == undefined) {
-    console.log("invalid input");
-  } else {
-    setTimeout(() => {
-      fs.readFile("../JSONData/lists.json", "utf-8", (err, data) => {
-        if (err) {
-          callback(err);
+const promise2=(id)=>{
+  return new Promise((resolve,reject)=>{
+    fs.readFile("../JSONData/lists.json", "utf-8", (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        let parsedData = JSON.parse(data);
+        let result;
+        if (id in parsedData) {
+          result = parsedData[id];
         } else {
-          let parsedData = JSON.parse(data);
-          let result;
-          if (id in parsedData) {
-            result = parsedData[id];
-          } else {
-            result = [];
-          }
-
-          callback(err,result);
+          result = [];
         }
-      });
-    }, 2000);
-  }
-};
 
-module.exports = callback2;
+        resolve(result);
+      }
+    });
+  })
+}
+module.exports = promise2;
