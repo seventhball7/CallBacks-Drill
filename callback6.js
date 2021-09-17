@@ -23,7 +23,7 @@ const callback6= (thanosID) => {
           console.log(listData);
           let listId = listData
             .filter((value) => {
-              return value.name == "Mind";
+              return value.name;
             })
             .map((value) => {
               return value.id;
