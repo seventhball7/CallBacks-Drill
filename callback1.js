@@ -1,23 +1,19 @@
 const fs = require("fs");
 
-const callback1 = (id, callback) => {
-  if (callback == undefined || id == undefined) {
-    console.log("rec  undefined");
-  } else {
-    setTimeout(() => {
-      fs.readFile("../JSONData/boards.json", "utf8", (err, data) => {
-        if (err) {
-          callback(err);
-        } else {
-          let parsedData = JSON.parse(data);
-
-          const result = parsedData.filter((value) => {
-            return value.id == id;
-          });
-          callback(err, result);
-        }
-      });
-    }, 2000);
-  }
+const promise1 = (id) => {
+  return new Promise((resolve, reject) => {
+    fs.readFile("../JSONData/boards.json", "utf8", (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        let parsedData = JSON.parse(data);
+        const result = parsedData.filter((value) => {
+          return value.id == id;
+        });
+        resolve(result);
+      }
+    });
+  });
 };
-module.exports = callback1;
+
+module.exports = promise1;
