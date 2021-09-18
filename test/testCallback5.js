@@ -1,4 +1,6 @@
-const cb=require('../callback5');
+const iresult=require('../callback5');
 
-const thanosID="mcu453ed";
-cb(thanosID);
+const thanosId="mcu453ed";
+
+iresult(thanosId)
+
